@@ -45,7 +45,32 @@
       <label for="nbStar" class="text-light">Étoiles</label>
       <input type="number" class="form-control" id="nbStar" name="nbStar" [(ngModel)]="voyage.nbStar" #nbStarInput="ngModel">
     </div>
+    <!-- Image principale -->
+    <div class="form-group mb-3">
+      <label for="mainPictureSrc" class="text-light">URL de l'image principale</label>
+      <input type="text" class="form-control" id="mainPictureSrc" [(ngModel)]="voyage.mainPicture.src" name="mainPictureSrc" required>
 
+      <label for="mainPictureAlt" class="text-light">Texte alternatif de l'image principale</label>
+      <input type="text" class="form-control" id="mainPictureAlt" [(ngModel)]="voyage.mainPicture.alt" name="mainPictureAlt" required>
+    </div>
+
+ <!--   <div class="form-group mb-3">
+      <label for="pictureSrc" class="text-light">URL d'une image supplémentaire</label>
+      <input type="text" class="form-control" id="pictureSrc" [(ngModel)]="voyage.pictures[0].src" name="pictureSrc">
+
+      <label for="pictureAlt" class="text-light">Texte alternatif de l'image supplémentaire</label>
+      <input type="text" class="form-control" id="pictureAlt" [(ngModel)]="voyage.pictures[0].alt" name="pictureAlt">
+    </div>-->
+    <button type="button" class="btn btn-secondary" (click)="addPictureField()">+</button>
+
+    <!-- Champs dynamiques pour chaque image supplémentaire -->
+    <div *ngFor="let picture of voyage.pictures; let i = index" class="form-group mb-3">
+      <label for="pictureSrc{{i}}" class="text-light">URL de l'image supplémentaire {{i + 1}}</label>
+      <input type="text" class="form-control" id="pictureSrc{{i}}" [(ngModel)]="picture.src" name="pictureSrc{{i}}">
+
+      <label for="pictureAlt{{i}}" class="text-light">Texte alternatif de l'image supplémentaire {{i + 1}}</label>
+      <input type="text" class="form-control" id="pictureAlt{{i}}" [(ngModel)]="picture.alt" name="pictureAlt{{i}}">
+    </div>
     <!-- Image du voyage -->
 <!--    <div class="form-group mb-3">
       <label for="image" class="text-light">Image</label>

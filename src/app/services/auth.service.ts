@@ -21,6 +21,15 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
+  // islogedin permet de verifier si l'utilisateur est connecté ou pas en renvoyant un boolean.
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
+  logout(): void {
+    localStorage.removeItem('token'); // Supprime le token du localStorage
+
+  }
 // le handleError comme vue dans le cours pour géré les erreurs.
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

@@ -19,7 +19,12 @@
     <!-- Type de voyage -->
     <div class="form-group mb-3">
       <label for="type" class="text-light">Type</label>
-      <input type="text" class="form-control" id="type" name="type" [(ngModel)]="voyage.type" required #typeInput="ngModel">
+      <select class="form-control" id="type" name="type" [(ngModel)]="voyage.type" required #typeInput="ngModel">
+        <option value="" disabled selected>Choisissez un type</option>
+        <option value="Terre">Terre</option>
+        <option value="Mer">Mer</option>
+        <option value="Montagne">Montagne</option>
+      </select>
       <div *ngIf="typeInput.valid" class="valid-feedback">Looks good!</div>
       <div *ngIf="typeInput.invalid" class="invalid-feedback">Veuillez préciser le type de voyage</div>
     </div>
@@ -48,6 +53,24 @@
       <div *ngIf="nbStarInput.valid" class="valid-feedback">Looks good!</div>
       <div *ngIf="nbStarInput.invalid" class="invalid-feedback">Veuillez attribuer une note</div>
     </div>
+
+    <div class="form-group mb-3" *ngIf="voyage.mainPicture">
+      <label for="mainPictureSrc" class="text-light">URL de l'image principale</label>
+      <input type="text" class="form-control" id="mainPictureSrc" name="mainPictureSrc" [(ngModel)]="voyage.mainPicture.src" required>
+
+      <label for="mainPictureAlt" class="text-light">Texte alternatif de l'image principale</label>
+      <input type="text" class="form-control" id="mainPictureAlt" name="mainPictureAlt" [(ngModel)]="voyage.mainPicture.alt" required>
+    </div>
+
+    <!-- champ pour une image supplémentaire -->
+    <div class="form-group mb-3" *ngIf="voyage.pictures">
+      <label for="additionalPictureSrc" class="text-light">URL d'une image supplémentaire</label>
+      <input type="text" class="form-control" id="additionalPictureSrc" name="additionalPictureSrc" [(ngModel)]="voyage.pictures[0].src">
+
+      <label for="additionalPictureAlt" class="text-light">Texte alternatif de l'image supplémentaire</label>
+      <input type="text" class="form-control" id="additionalPictureAlt" name="additionalPictureAlt" [(ngModel)]="voyage.pictures[0].alt">
+    </div>
+
 
     <!-- Image du voyage -->
  <!--   <div class="form-group mb-3">

@@ -28,6 +28,9 @@ export class AddComponent implements OnInit{
 
     })
   }
+  addPictureField() {
+    this.voyage.pictures.push({ src: '', alt: '' });
+  }
 
   ngOnInit(): void {
     this.isLoading = false;

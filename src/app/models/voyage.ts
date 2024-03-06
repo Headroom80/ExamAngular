@@ -6,6 +6,7 @@ export class Voyage {
   longitude?: number;
   type?: string;
   pictures?: Picture[];
+  mainPicture?: Picture;
   nbStar?: number;
 
 }

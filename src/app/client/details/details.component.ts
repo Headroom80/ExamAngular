@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {VoyageService} from "../../services/voyage.service";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {Voyage} from "../../models/voyage";
 import {NgForOf, NgIf} from "@angular/common";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
+
 
 @Component({
   selector: 'app-details',
@@ -21,6 +22,7 @@ export class DetailsComponent implements OnInit {
   isLoading = true;
   safeUrl?: SafeResourceUrl;
 
+
   constructor(private voyageService: VoyageService, private activatedRoute: ActivatedRoute, private sanetizer: DomSanitizer) {
   }
 
@@ -30,10 +32,20 @@ export class DetailsComponent implements OnInit {
       this.voyageService.getVoyage(+id).subscribe(data => {
         this.voyage = data;
         this.isLoading = false;
-        this.updateSafeUrl(data.lattitude, data.longitude);
+        if (data.lattitude && data.longitude) {
+          this.updateSafeUrl(data.lattitude, data.longitude);
+        }
+        this.voyage.pictures?.sort((a, b) => {
+          if (this.voyage?.mainPicture) {
+            return a.id === this.voyage.mainPicture.id ? -1 : b.id === this.voyage.mainPicture.id ? 1 : 0;
+          }
+          return 0;
+        });
       });
     }
   }
+
+
 
   updateSafeUrl(latitude?: number, longitude?: number) {
     if (latitude == null || longitude == null) {
