@@ -1,10 +1,21 @@
+<div class="app-details">
+  <div *ngIf="voyage" class="container">
+    <img *ngIf="voyage.mainPicture" class='photo' [src]="voyage.mainPicture.src" [alt]="voyage.mainPicture.alt"/>
+    <ng-container *ngIf="voyage.pictures">
+      <img *ngFor="let picture of voyage.pictures; let i = index" class='photo' [src]="picture.src" [alt]="picture.alt" [style.animationDelay]="getDelay(i)"/>
+    </ng-container>
+  </div>
+  <div class="voyage-info">
+    <h2>{{ voyage?.destination }}</h2>
+    <p *ngIf="voyage?.nbStar">Rating:
+      <span *ngFor="let star of getFullStars(voyage?.nbStar); index as i" class="gold">&#9733;</span>
+      <span *ngFor="let empty of getEmptyStars(voyage?.nbStar); index as i" class="empty-star">&#9733;</span>
+    </p>
+    <p class="price">Prix : 999$</p>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><button class="btn2">Réserver</button></a>
+  </div>
 
-<div class="col-lg-6">
-          <iframe
-            class="w-100"
-            style="border:0; min-height: 450px; height: 100%;"
-            frameborder="0"
-            allowfullscreen=""
-            [src]="safeUrl">
-          </iframe>
+  <div style="margin-top: 50px" class="col-lg-6">
+    <iframe class="w-100" style="border:0; min-height: 450px; height: 100%;" frameborder="0" allowfullscreen="" [src]="safeUrl"></iframe>
+  </div>
 </div>

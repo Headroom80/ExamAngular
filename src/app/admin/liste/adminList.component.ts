@@ -5,6 +5,7 @@ import {Voyage} from "../../models/voyage";
 import {VoyageService} from "../../services/voyage.service";
 import {ToastrService} from "ngx-toastr";
 import {DeleteConfirmService} from "../../services/confirm-delete.service";
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-admin-list',
@@ -19,7 +20,7 @@ export class AdminListComponent implements OnInit{
   voyages?: Voyage[];
 
   constructor(private router: Router, private voyageService: VoyageService,
-              private confirmSercice: DeleteConfirmService, private toastr: ToastrService) {
+              private confirmSercice: DeleteConfirmService, private toastr: ToastrService,private sanitizer: DomSanitizer) {
   }
   logout() {
     window.localStorage.removeItem("token");
@@ -46,6 +47,14 @@ export class AdminListComponent implements OnInit{
         })
       }
     });
+  }
+  getSafeUrl(url: string | undefined): SafeUrl | undefined {
+    if (url) {
+      return this.sanitizer.bypassSecurityTrustUrl(url);
+    }
+    else{
+      return '';
+    }
   }
 
   protected readonly numberAttribute = numberAttribute;

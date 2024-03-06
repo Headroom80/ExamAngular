@@ -1,24 +1,210 @@
+.app-admin {
+  margin-left: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  background-color: rgb(244, 227, 180);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #000;
+}
+
+
+* {
+  color: #000;
+}
+
 .admin-panel {
-  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.admin-panel .btn {
-  margin-right: 10px;
-}
-
-.admin-panel .btn:hover {
-  filter: brightness(120%);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  border: 2px solid rgb(251, 172, 153);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 50vw;
 }
 
 
-.admin-panel a {
-  color: inherit;
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.table th, .table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+body > app-root > app-admin-list > div.admin-panel.glassy-glowy.p-3 > table * {
+  background-color: red;
+}
+.table-custom, .table-custom th, .table-custom td, .table-custom thead th, .table-custom tbody tr {
+  background-color: rgb(246, 231, 190);
+}
+
+
+.table-custom tbody tr:hover {
+  background-color: rgba(246, 231, 190, 0.9);
+}
+
+
+.table-custom th, .table-custom td {
+  border: 1px solid #dee2e6;
+  color: #495057;
+}
+
+.table-custom thead th {
+  color: #fff;
+  background-color: #6c757d;
+}
+
+.btn-custom {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
   text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-.admin-panel a:hover {
-  text-decoration: underline;
+.btn-custom:hover {
+  background-color: #fff;
+}
+
+.btn-custom:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .btn-custom {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+
+.btn2 {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  max-width: 5vw;
+}
+
+.btn2:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.btn2:hover:after {
+  transform: translate(0, 0);
+}
+
+.btn2:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.btn2:hover {
+  outline: 0;
+  background-color: #f38484;
+}
+
+@media (min-width: 768px) {
+  .btn2 {
+    padding: 0 40px;
+  }
+}
+
+.btn3 {
+  align-items: center;
+  background-color: #f38484;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  min-width: 140px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn3:focus {
+  color: #171e29;
+}
+
+.btn3:hover {
+  border-color: #ff9ddc;
+  color: #ff9ddc;
+  fill: #ff9ddc;
+}
+
+.btn3:active {
+  border-color: #ff9ddc;
+  color: #ff9ddc;
+  fill: #ff9ddc;
+}
+
+@media (min-width: 768px) {
+  .btn3 {
+    min-width: 170px;
+  }
 }

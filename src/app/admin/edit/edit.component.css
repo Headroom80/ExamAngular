@@ -1,36 +1,42 @@
+.app-edit{
+  margin-left: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .glassy-glowy {
-  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  border: 2px solid rgb(251, 172, 153);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+  border-radius: 10px;
+  border: 1px solid rgb(251, 172, 153);
+  color: #000;
+}
+
+.btn-success, .btn-primary {
+  background-color: rgb(251, 172, 153);
   color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
 
-.form-control, .form-select {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
+.btn-success:hover, .btn-primary:hover {
+  background-color: rgba(251, 172, 153, 0.8);
 }
 
-.form-control:focus, .form-select:focus {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: #fff;
-  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+.text-light {
+  color: #fff; /* Assurez-vous que cela ne rende pas le texte illisible sur l'arrière-plan clair de votre formulaire */
 }
 
-.label, .form-check-label, .btn {
-  color: #fff;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #004085;
-}
 
 .btn-success {
   margin-right: 15px;
@@ -39,3 +45,33 @@
 .invalid-feedback {
   display: block;
 }
+/*--------------PICTUREARRAYTEST----------------------*/
+.image-previews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.image-preview {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.img-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.delete-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+

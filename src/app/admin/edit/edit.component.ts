@@ -5,6 +5,7 @@ import {FormsModule} from "@angular/forms";
 import {Voyage} from "../../models/voyage";
 import {VoyageService} from "../../services/voyage.service";
 import { NgForm } from '@angular/forms';
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 @Component({
   selector: 'app-edit',
   standalone: true,
@@ -19,7 +20,7 @@ export class EditComponent implements OnInit{
 
 
   constructor(private voyageService: VoyageService,
-              private activatedRoute: ActivatedRoute, private routerService: Router) {
+              private activatedRoute: ActivatedRoute, private routerService: Router, private sanitizer: DomSanitizer) {
   }
 
   ngOnInit(): void {
@@ -48,6 +49,30 @@ export class EditComponent implements OnInit{
       });
     } else {
       console.error('Le formulaire de voyage est invalide ou l\'ID du voyage est manquant');
+    }
+  }
+  removePicture(index: number) {
+    if (this.voyage?.pictures) {
+      if (index > -1 && index < this.voyage.pictures.length) {
+        this.voyage.pictures.splice(index, 1);
+      }
+    }
+  }
+  addPictureField() {
+    if(this.voyage?.pictures){
+    if (!this.voyage.pictures) {
+      this.voyage.pictures = [];
+    }
+
+    this.voyage.pictures.push({ src: '', alt: '' });
+  }
+  }
+  getSafeUrl(url: string | undefined): SafeUrl | undefined {
+    if (url) {
+      return this.sanitizer.bypassSecurityTrustUrl(url);
+    }
+    else{
+      return '';
     }
   }
   }

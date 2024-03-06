@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {Observable} from "rxjs";
 import {ModalConfirmComponent} from "../admin/confirm-modal/confirm-modal.component";
 
 @Injectable({

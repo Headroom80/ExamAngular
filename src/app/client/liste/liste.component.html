@@ -1,4 +1,3 @@
-<!-- Affichage du loader si isLoading est true -->
 <div *ngIf="isLoading" class="loader" role="status"></div>
 <div class="container">
   <div class="row">
@@ -11,7 +10,10 @@
           <div class="card-body">
             <h5 class="card-title">{{ voyage.destination }}</h5>
             <p class="card-text">Type: {{ voyage.type }}</p>
-            <p class="card-text">Étoiles: {{ voyage.nbStar }}</p>
+            <p class="card-text" *ngIf="voyage.nbStar">Rating:
+              <span *ngFor="let star of getFullStars(voyage.nbStar); let i = index" class="gold">&#9733;</span>
+              <span *ngFor="let empty of getEmptyStars(voyage.nbStar); let i = index" class="empty-star">&#9733;</span>
+            </p>
             <a routerLink="/voyage/{{voyage.id}}" class="btn btn-primary">Plus d'infos</a>
           </div>
         </div>

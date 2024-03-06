@@ -1,4 +1,5 @@
-<h1 class="text-center text-light my-4">Edit un Voyage</h1>
+<div class="app-edit">
+<h1 class="text-center text-dark my-4">Edit un Voyage</h1>
 
 <div class="d-flex justify-content-start mb-4">
   <a routerLink="/admin/liste" class="btn btn-success">Retour</a>
@@ -10,7 +11,7 @@
   <form (submit)="updateVoyage()" #voyageForm="ngForm" *ngIf="voyage">
     <!-- Destination -->
     <div class="form-group mb-3">
-      <label for="destination" class="text-light">Destination</label>
+      <label for="destination" class="text-dark">Destination</label>
       <input type="text" class="form-control" id="destination" name="destination" [(ngModel)]="voyage.destination" required #destinationInput="ngModel">
       <div *ngIf="destinationInput.valid" class="valid-feedback">Looks good!</div>
       <div *ngIf="destinationInput.invalid" class="invalid-feedback">Veuillez saisir une destination</div>
@@ -18,7 +19,7 @@
 
     <!-- Type de voyage -->
     <div class="form-group mb-3">
-      <label for="type" class="text-light">Type</label>
+      <label for="type" class="text-dark">Type</label>
       <select class="form-control" id="type" name="type" [(ngModel)]="voyage.type" required #typeInput="ngModel">
         <option value="" disabled selected>Choisissez un type</option>
         <option value="Terre">Terre</option>
@@ -30,7 +31,7 @@
     </div>
 
     <div class="form-group mb-3">
-      <label for="latitude" class="text-light">Latitude</label>
+      <label for="latitude" class="text-dark">Latitude</label>
       <input type="number" class="form-control" id="latitude" name="latitude" [(ngModel)]="voyage.lattitude" required #latitudeInput="ngModel" step="any">
       <div *ngIf="latitudeInput.invalid && (latitudeInput.dirty || latitudeInput.touched)" class="invalid-feedback">
         Veuillez saisir la latitude.
@@ -39,7 +40,7 @@
 
     <!-- Longitude -->
     <div class="form-group mb-3">
-      <label for="longitude" class="text-light">Longitude</label>
+      <label for="longitude" class="text-dark">Longitude</label>
       <input type="number" class="form-control" id="longitude" name="longitude" [(ngModel)]="voyage.longitude" required #longitudeInput="ngModel" step="any">
       <div *ngIf="longitudeInput.invalid && (longitudeInput.dirty || longitudeInput.touched)" class="invalid-feedback">
         Veuillez saisir la longitude.
@@ -48,33 +49,39 @@
 
     <!-- Étoiles -->
     <div class="form-group mb-3">
-      <label for="nbStar" class="text-light">Étoiles</label>
+      <label for="nbStar" class="text-dark">Étoiles</label>
       <input type="number" class="form-control" id="nbStar" name="nbStar" [(ngModel)]="voyage.nbStar" required #nbStarInput="ngModel">
       <div *ngIf="nbStarInput.valid" class="valid-feedback">Looks good!</div>
       <div *ngIf="nbStarInput.invalid" class="invalid-feedback">Veuillez attribuer une note</div>
     </div>
 
     <div class="form-group mb-3" *ngIf="voyage.mainPicture">
-      <label for="mainPictureSrc" class="text-light">URL de l'image principale</label>
+      <label for="mainPictureSrc" class="text-dark">URL de l'image principale</label>
       <input type="text" class="form-control" id="mainPictureSrc" name="mainPictureSrc" [(ngModel)]="voyage.mainPicture.src" required>
 
-      <label for="mainPictureAlt" class="text-light">Texte alternatif de l'image principale</label>
+      <label for="mainPictureAlt" class="text-dark">Texte alternatif de l'image principale</label>
       <input type="text" class="form-control" id="mainPictureAlt" name="mainPictureAlt" [(ngModel)]="voyage.mainPicture.alt" required>
     </div>
+    <button type="button" class="btn btn-secondary" (click)="addPictureField()">+</button>
 
-    <!-- champ pour une image supplémentaire -->
-    <div class="form-group mb-3" *ngIf="voyage.pictures">
-      <label for="additionalPictureSrc" class="text-light">URL d'une image supplémentaire</label>
-      <input type="text" class="form-control" id="additionalPictureSrc" name="additionalPictureSrc" [(ngModel)]="voyage.pictures[0].src">
+    <div *ngFor="let picture of voyage.pictures; let i = index" class="form-group mb-3">
+      <label for="pictureSrc{{i}}" class="text-dark">URL de l'image supplémentaire {{i + 1}}</label>
+      <input type="text" class="form-control" id="pictureSrc{{i}}" [(ngModel)]="picture.src" name="pictureSrc{{i}} " loading="lazy">
 
-      <label for="additionalPictureAlt" class="text-light">Texte alternatif de l'image supplémentaire</label>
-      <input type="text" class="form-control" id="additionalPictureAlt" name="additionalPictureAlt" [(ngModel)]="voyage.pictures[0].alt">
+      <label for="pictureAlt{{i}}" class="text-dark">Texte alternatif de l'image supplémentaire {{i + 1}}</label>
+      <input type="text" class="form-control" id="pictureAlt{{i}}" [(ngModel)]="picture.alt" name="pictureAlt{{i}}" loading="lazy">
+    </div>
+    <div *ngIf="voyage.pictures" class="image-previews">
+      <div *ngFor="let picture of voyage.pictures; let i = index" class="image-preview">
+        <img *ngIf="picture.src" [src]="getSafeUrl(picture.src)" [alt]="picture.alt" class="img-thumbnail" loading="lazy">
+        <button type="button" class="delete-button" (click)="removePicture(i)">X</button>
+      </div>
     </div>
 
 
     <!-- Image du voyage -->
  <!--   <div class="form-group mb-3">
-      <label for="image" class="text-light">Image</label>
+      <label for="image" class="text-dark">Image</label>
       <input type="text" class="form-control" id="image" name="image" [(ngModel)]="voyage.image" #imageInput="ngModel">
       <div *ngIf="imageInput.valid" class="valid-feedback">Looks good!</div>
       <div *ngIf="imageInput.invalid" class="invalid-feedback">Veuillez fournir un lien d'image valide</div>
@@ -82,4 +89,5 @@
 
     <button [disabled]="!voyageForm.valid" type="submit" class="btn btn-primary">Update</button>
   </form>
+</div>
 </div>

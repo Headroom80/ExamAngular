@@ -1,4 +1,4 @@
-<div *ngIf="isLoading" class="spinner-border text-light" role="status">
+<div *ngIf="isLoading" class="spinner-border text-dark" role="status">
   <span class="sr-only">Chargement...</span>
 </div>
 
@@ -6,7 +6,7 @@
   <form (submit)="loggedUser()" #loginForm="ngForm">
     <div class="form-row">
       <div class="col-md-4 mb-3">
-        <label for="username" class="text-light">Username</label>
+        <label for="username" class="text-dark">Username</label>
         <input type="text" class="form-control" id="username" name="username" placeholder="Nom d'utilisateur" required [(ngModel)]="user.username" #usernameInput="ngModel">
         <div class="feedback" *ngIf="usernameInput.dirty">
           <div *ngIf="usernameInput.valid" class="text-success">Ok</div>
@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="col-md-4 mb-3">
-        <label for="password" class="text-light">Password</label>
+        <label for="password" class="text-dark">Password</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required [(ngModel)]="user.password" #passwordInput="ngModel">
         <div class="feedback" *ngIf="passwordInput.dirty">
           <div *ngIf="passwordInput.valid" class="text-success">Ok</div>
@@ -29,4 +29,4 @@
   </form>
 </div>
 
-<a routerLink="/" class="text-light">ClientSide</a>
+<a routerLink="/" class="text-dark">ClientSide</a>

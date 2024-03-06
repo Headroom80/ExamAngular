@@ -2,7 +2,6 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {VoyageService} from "../../services/voyage.service";
 import {Voyage} from "../../models/voyage";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
-import {Observable} from "rxjs";
 import {RouterLink} from "@angular/router";
 
 @Component({
@@ -30,6 +29,14 @@ export class ListeComponent implements OnInit{
       this.isLoading = false;
     })
   }
+  getFullStars(nbStar: number): Array<number> {
+    return new Array(nbStar);
+  }
+
+  getEmptyStars(nbStar: number): Array<number> {
+    return new Array(5 - nbStar);
+  }
+
 
 
 }

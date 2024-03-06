@@ -8,5 +8,9 @@ export class Voyage {
   pictures?: Picture[];
   mainPicture?: Picture;
   nbStar?: number;
+  voyage?: Voyage = {
+    mainPicture: { src: '', alt: '' },
+    pictures: []
+  };
 
 }

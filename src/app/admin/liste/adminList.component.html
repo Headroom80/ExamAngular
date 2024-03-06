@@ -1,12 +1,13 @@
-<h1 class="text-center my-4">Bienvenue sur l'accès d'administration des Voyages</h1>
+<div class="app-admin">
+<h1 class="text-center my-4">Voyages Admin Panel</h1>
 
 <div class="d-flex justify-content-between mb-4">
-  <button (click)="logout()" class="btn btn-danger">Me déconnecter</button>
-  <a [routerLink]="['/admin/add-voyage']" class="btn btn-success">Ajouter un nouveau voyage</a>
+  <button (click)="logout()" class="btn2  ">Log Out</button>
+  <a [routerLink]="['/admin/add-voyage']" class="btn2">Add</a>
 </div>
 
 <div class="admin-panel glassy-glowy p-3">
-  <table class="table table-dark table-hover" *ngIf="!isLoading">
+  <table class="table table-hover table-custom" *ngIf="!isLoading">
     <thead>
     <tr>
       <th scope="col">#</th>
@@ -19,15 +20,20 @@
     <tbody>
     <tr *ngFor="let voyage of voyages">
       <th scope="row">{{ voyage?.id }}</th>
-      <td>{{ voyage?.destination }}</td>
+      <td><strong>{{ voyage?.destination }}</strong>
+        <br>
+        <img *ngIf="voyage.pictures && voyage.pictures.length > 0" [src]="getSafeUrl(voyage.pictures[0].src)" style="width: 100px; height: auto; border-radius: 5px; margin-top: 10px;" alt="Aperçu du voyage">
+
+      </td>
       <td>{{ voyage?.type }}</td>
       <td>{{ voyage?.nbStar }}</td>
       <td>
-        <button (click)="deleteEvent(voyage.id!)" class="btn btn-danger">Supprimer</button>
-        <a [routerLink]="['/admin/edit', voyage?.id]" class="btn btn-info">Mettre à jour</a>
+        <button (click)="deleteEvent(voyage.id!)" class="btn2">Supprimer</button>
+        <a [routerLink]="['/admin/edit', voyage?.id]" class="btn2">Update</a>
       </td>
     </tr>
     </tbody>
   </table>
-  <a routerLink="/" class="btn btn-primary">Client Side</a>
+  <a routerLink="/" class="btn-custom">Client Side</a>
+</div>
 </div>

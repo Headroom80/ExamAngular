@@ -1,19 +1,67 @@
 
-body{
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: #2d2c2c;
+  padding: 20px;
 }
-.glassy-glowy {
-   background: rgb(234, 226, 194);
-   backdrop-filter: blur(10px);
-   border-radius: 20px;
-   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.1);
-   border: none;
-   overflow: hidden;
- }
+.container .row{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+}
+
+
+.card.glassy-glowy {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgb(251, 172, 153);
+  overflow: hidden;
+  min-width: 30vw;
+}
+
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title, .card-text {
+  color: #000;
+}
+
+.btn-primary {
+  background-color: rgb(251, 172, 153);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.btn-primary:hover {
+  background-color: rgba(251, 172, 153, 0.8);
+}
+.gold {
+  color: gold;
+  font-size: 2em;
+}
+.empty-star {
+  color: black;
+  -webkit-text-stroke: 1px gold;
+  font-size: 2em;
+  display: inline-block;
+}
+
 .loader {
   width: 48px;
   height: 48px;
@@ -25,6 +73,7 @@ body{
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
+
 .loader::after,
 .loader::before {
   content: '';
@@ -44,6 +93,7 @@ body{
   animation: rotationBack 0.5s linear infinite;
   transform-origin: center center;
 }
+
 .loader::before {
   width: 32px;
   height: 32px;
@@ -59,6 +109,7 @@ body{
     transform: rotate(360deg);
   }
 }
+
 @keyframes rotationBack {
   0% {
     transform: rotate(0deg);

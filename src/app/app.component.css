@@ -1,3 +1,107 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
+  border-right: 2px solid rgb(251, 172, 153);
+  box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-brand {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.sidebar-items {
+  flex-grow: 1;
+}
+
+.sidebar-item {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  color: #000;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgb(251, 172, 153);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-item:hover {
+  background-color: rgba(251, 172, 153, 0.8);
+}
+
+.sidebar-items-right {
+  margin-top: auto;
+}
+
+
+.btn2 {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn2:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.btn2:hover:after {
+  transform: translate(0, 0);
+}
+
+.btn2:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.btn2:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .btn2 {
+    padding: 0 40px;
+  }
+}
+
 .loader {
   width: 48px;
   height: 48px;
@@ -9,6 +113,7 @@
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
+
 .loader::after,
 .loader::before {
   content: '';
@@ -28,6 +133,7 @@
   animation: rotationBack 0.5s linear infinite;
   transform-origin: center center;
 }
+
 .loader::before {
   width: 32px;
   height: 32px;
@@ -43,6 +149,7 @@
     transform: rotate(360deg);
   }
 }
+
 @keyframes rotationBack {
   0% {
     transform: rotate(0deg);

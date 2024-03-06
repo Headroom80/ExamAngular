@@ -1,14 +1,71 @@
-.login-form {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1), 0 1px 3px rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+body {
+  background-color: rgb(244, 227, 180);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #000;
+}
+*{
+  color: #000;
 }
 
+
+form {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  border: 2px solid rgb(251, 172, 153);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+  color: #000;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(251, 172, 153);
+  color: #000;
+}
+
+button {
+  background-color: rgb(251, 172, 153);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgba(251, 172, 153, 0.8);
+}
+form{
+  max-width:33vw;
+  margin: auto;
+  margin-top: 33vh;
+}
+body > app-root > app-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+/*
+--------------------------FEEDBACK&LOADER---------------------------------
+*/
 .feedback {
   display: block;
   margin-top: 0.25rem;

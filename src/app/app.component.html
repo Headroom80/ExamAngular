@@ -1,37 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Voyages</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/voyage-liste">Voyage liste</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/nous-contacter">Nous Contacter</a>
-      </li>
-      <li class="nav-item" *ngIf="isLoggedIn()">
-        <a class="nav-link" routerLink="/admin/liste">AdminPanel</a>
-      </li>
-      <li class="nav-item" *ngIf="isLoggedIn()">
-        <a class="nav-link" routerLink="/admin/add-voyage">Ajouter</a>
-      </li>
-    </ul>
-    <!-- Éléments de navigation à droite -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Log Out pour les utilisateurs connectés -->
-      <li class="nav-item" *ngIf="isLoggedIn()">
-        <a class="nav-link" href="#" (click)="logout()">Log Out</a>
-      </li>
-      <!-- Log In pour les visiteurs -->
-      <li class="nav-item" *ngIf="!isLoggedIn()">
-        <a class="nav-link" routerLink="/login">Log In</a>
-      </li>
-    </ul>
+<div class="sidebar">
+  <a class="sidebar-brand btn2" routerLink="/">Voyages</a>
+  <div class="sidebar-items">
+    <a class="sidebar-item" routerLink="/">Voyage Liste</a>
+    <a class="sidebar-item" routerLink="/nous-contacter">Nous Contacter</a>
+    <a class="sidebar-item" *ngIf="isLoggedIn()" routerLink="/admin/liste">AdminPanel</a>
+    <a class="sidebar-item" *ngIf="isLoggedIn()" routerLink="/admin/add-voyage">Ajouter</a>
   </div>
-</nav>
+  <div class="sidebar-items sidebar-items-right">
+    <a class="sidebar-item" *ngIf="isLoggedIn()" href="#" (click)="logout()">Log Out</a>
+    <a class="sidebar-item" *ngIf="!isLoggedIn()" routerLink="/login">Log In</a>
+  </div>
+</div>
+
 <router-outlet />

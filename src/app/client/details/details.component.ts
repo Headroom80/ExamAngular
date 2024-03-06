@@ -54,12 +54,20 @@ export class DetailsComponent implements OnInit {
     const mapUrl = `https://maps.google.com/maps?q=${latitude},${longitude}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
     this.safeUrl = this.sanetizer.bypassSecurityTrustResourceUrl(mapUrl);
   }
-  get fullStars() {
-    return new Array(this.voyage?.nbStar).fill(0);
+  getDelay(index: number): string {
+    if(this.voyage?.pictures == null) return '0s';
+    const delay = (4 * (this.voyage.pictures.length - index)).toString();
+    return delay + 's';
+  }
+  getFullStars(nbStar: number | undefined): Array<number> {
+    const stars = nbStar || 0;
+    return Array(stars).fill(0);
   }
 
-  get emptyStars() {
-    return new Array(5 - (this.voyage?.nbStar ?? 0)).fill(0);
+  getEmptyStars(nbStar: number | undefined): Array<number> {
+    const maxStars = 5;
+    const emptyStars = nbStar ? maxStars - nbStar : maxStars;
+    return Array(emptyStars).fill(0);
   }
  /* getMainPictureUrl(): string {
     return this.voyage?.pictures.find(p => p.id === this.voyage?.main_picture_id)?.src || '';

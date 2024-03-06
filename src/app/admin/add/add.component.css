@@ -1,36 +1,53 @@
-
-body {
-  background-color: #121212;
-  color: #ffffff;
+.app-add{
+  margin-left: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body > app-root > app-add > div > h1{
+font-size: 2em  ;
+  font-weight: bolder;
 }
 
 
 .glassy-glowy {
-  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 20px;
-  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  border: 2px solid rgb(251, 172, 153);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 
 .form-control {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  border-radius: 5px;
+  border-radius: 10px;
+  border: 1px solid rgb(251, 172, 153);
+  color: #000;
 }
 
-.form-control:focus {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: #fff;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+
+label.text-light {
+  color: #000;
 }
 
-/* Styles pour les labels */
-.label, .form-label {
-  color: #fff;
+
+.btn-primary, .btn-secondary, .btn-success {
+  background-color: rgb(251, 172, 153);
+  color: #100f0f;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover, .btn-secondary:hover, .btn-success:hover {
+  background-color: rgba(251, 172, 153, 0.8);
+}
+
+
+.h1.text-center.text-light {
+  color: #000;
 }
 
 
