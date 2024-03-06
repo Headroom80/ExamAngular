@@ -1,0 +1,41 @@
+<div *ngIf="isLoading" class="loader" role="status"></div>
+<ng-container *ngIf="!isLoading">
+  <div class="container-fluid" *ngIf="voyage">
+    <div class="row">
+      <div class="col-lg-6">
+        <a routerLink="/" class="btn btn-dark mb-3">Liste des voyages</a>
+
+        <div class="card voyage-card glassy-glowy h-100">
+
+          <img [src]="voyage.pictures?.[0]?.src" class="card-img-top" [alt]="voyage.pictures?.[0]?.alt">
+          <div class="card-body">
+            <h5 class="card-title">{{ voyage.destination }}</h5>
+            <p class="card-text">Type: {{ voyage.type }}</p>
+            <p class="card-text">Latitude: {{ voyage.lattitude }}, Longitude: {{ voyage.longitude }}</p>
+
+
+              <div class="card-text">
+            <div *ngIf="!isLoading && voyage">
+              <div class="card-text">
+                <span *ngFor="let star of fullStars" class="star">&#9733;</span>
+                <span *ngFor="let star of emptyStars" class="star">&#9734;</span>
+              </div>
+            </div>
+          </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <iframe
+          class="w-100"
+          style="border:0; min-height: 450px; height: 100%;"
+          frameborder="0"
+          allowfullscreen=""
+          [src]="safeUrl">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</ng-container>

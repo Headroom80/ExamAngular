@@ -1,0 +1,62 @@
+<h1 class="text-center text-light my-4">Edit un Voyage</h1>
+
+<div class="d-flex justify-content-start mb-4">
+  <a routerLink="/admin/liste" class="btn btn-success">Retour</a>
+</div>
+
+<div *ngIf="isLoading" class="loader" role="status"></div>
+
+<div *ngIf="!isLoading" class="glassy-glowy p-4">
+  <form (submit)="updateVoyage()" #voyageForm="ngForm" *ngIf="voyage">
+    <!-- Destination -->
+    <div class="form-group mb-3">
+      <label for="destination" class="text-light">Destination</label>
+      <input type="text" class="form-control" id="destination" name="destination" [(ngModel)]="voyage.destination" required #destinationInput="ngModel">
+      <div *ngIf="destinationInput.valid" class="valid-feedback">Looks good!</div>
+      <div *ngIf="destinationInput.invalid" class="invalid-feedback">Veuillez saisir une destination</div>
+    </div>
+
+    <!-- Type de voyage -->
+    <div class="form-group mb-3">
+      <label for="type" class="text-light">Type</label>
+      <input type="text" class="form-control" id="type" name="type" [(ngModel)]="voyage.type" required #typeInput="ngModel">
+      <div *ngIf="typeInput.valid" class="valid-feedback">Looks good!</div>
+      <div *ngIf="typeInput.invalid" class="invalid-feedback">Veuillez préciser le type de voyage</div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="latitude" class="text-light">Latitude</label>
+      <input type="number" class="form-control" id="latitude" name="latitude" [(ngModel)]="voyage.lattitude" required #latitudeInput="ngModel" step="any">
+      <div *ngIf="latitudeInput.invalid && (latitudeInput.dirty || latitudeInput.touched)" class="invalid-feedback">
+        Veuillez saisir la latitude.
+      </div>
+    </div>
+
+    <!-- Longitude -->
+    <div class="form-group mb-3">
+      <label for="longitude" class="text-light">Longitude</label>
+      <input type="number" class="form-control" id="longitude" name="longitude" [(ngModel)]="voyage.longitude" required #longitudeInput="ngModel" step="any">
+      <div *ngIf="longitudeInput.invalid && (longitudeInput.dirty || longitudeInput.touched)" class="invalid-feedback">
+        Veuillez saisir la longitude.
+      </div>
+    </div>
+
+    <!-- Étoiles -->
+    <div class="form-group mb-3">
+      <label for="nbStar" class="text-light">Étoiles</label>
+      <input type="number" class="form-control" id="nbStar" name="nbStar" [(ngModel)]="voyage.nbStar" required #nbStarInput="ngModel">
+      <div *ngIf="nbStarInput.valid" class="valid-feedback">Looks good!</div>
+      <div *ngIf="nbStarInput.invalid" class="invalid-feedback">Veuillez attribuer une note</div>
+    </div>
+
+    <!-- Image du voyage -->
+ <!--   <div class="form-group mb-3">
+      <label for="image" class="text-light">Image</label>
+      <input type="text" class="form-control" id="image" name="image" [(ngModel)]="voyage.image" #imageInput="ngModel">
+      <div *ngIf="imageInput.valid" class="valid-feedback">Looks good!</div>
+      <div *ngIf="imageInput.invalid" class="invalid-feedback">Veuillez fournir un lien d'image valide</div>
+    </div>-->
+
+    <button [disabled]="!voyageForm.valid" type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>

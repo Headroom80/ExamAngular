@@ -1,0 +1,24 @@
+<!-- Affichage du loader si isLoading est true -->
+<div *ngIf="isLoading" class="loader" role="status"></div>
+<div class="container">
+  <div class="row">
+    <ng-container *ngIf="!isLoading">
+      <div class="col-md-4" *ngFor="let voyage of voyages">
+        <div class="card glassy-glowy" style="width: 18rem;">
+          <div *ngIf="voyage.pictures && voyage.pictures.length > 0">
+            <img [src]="voyage.pictures[0].src" class="card-img-top" [alt]="voyage.pictures[0].alt">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ voyage.destination }}</h5>
+            <p class="card-text">Type: {{ voyage.type }}</p>
+            <p class="card-text">Étoiles: {{ voyage.nbStar }}</p>
+            <a routerLink="/voyage/{{voyage.id}}" class="btn btn-primary">Plus d'infos</a>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+</div>
+
+
