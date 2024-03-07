@@ -6,12 +6,12 @@
     </ng-container>
   </div>
   <div class="voyage-info">
-    <h2>{{ voyage?.destination }}</h2>
+    <h2 style="color: black"><strong>{{ voyage?.destination }}</strong></h2>
     <p *ngIf="voyage?.nbStar">Rating:
       <span *ngFor="let star of getFullStars(voyage?.nbStar); index as i" class="gold">&#9733;</span>
       <span *ngFor="let empty of getEmptyStars(voyage?.nbStar); index as i" class="empty-star">&#9733;</span>
     </p>
-    <p class="price">Prix : 999$</p>
+    <p class="price" style="color: black">Prix : 999$</p>
     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><button class="btn2">Réserver</button></a>
   </div>
 
